@@ -1,11 +1,11 @@
 # import relevant packages
 import pandas as pd
 import numpy as np
-from bs4 import BeautifulSoup
-from faker import Faker
+#from bs4 import BeautifulSoup
+#from faker import Faker
 
 # initialize faker
-fake = Faker()
+#fake = Faker()
 # Detecting external corrosion
 
 df1 = pd.read_csv('data.csv', sep=',')
