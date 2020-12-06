@@ -1,5 +1,11 @@
 import requests
 import json
+from flask import Response, Flask
+import time
+
+
+app = Flask(__name__)
+
 
 url = 'http://127.0.0.1:5000/results'
 

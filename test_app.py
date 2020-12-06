@@ -13,6 +13,7 @@ def home():
     return render_template('index.html')
 
 @app.route("/predict", methods=['POST'])
+
 def predict():
     features = [float(x) for x in request.form.values()]
     final_features = [np.array(features)]
@@ -27,6 +28,7 @@ def results():
     output = prediction[0]
     result = jsonify(output)
     return result
+    
 
 
 if __name__ == '__main__':
