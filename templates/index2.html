@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html >
+  
 <head>
   <meta charset="UTF-8">
   <title>Corrosion Defect Prediction </title>
@@ -9,33 +10,129 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   
-</head>
-
+</head> 
 <body style="background: #000;">
- <div class="login">
-	<h1>Corrosion Defect Prediction</h1>
+  </div>
+  </div>
+    
+    <div class="text-xs font-weight-bold text-uppercase mb-1">DIGITAL MODEL DASHBOARD</div>
+    <hr>
 
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="Wellhead Temperature (DegC)" placeholder="Wellhead Temperature (DegC)" required="required" />
-        <input type="text" name="Wellhead Pressure (psi)" placeholder="Wellhead Pressure (psi)" required="required" />
-        <input type="text" name="MMCFD - Gas" placeholder="MMCFD - Gas" required="required" />
-        <input type="text" name="BOPD(barrel of oil produced per day)" placeholder="BOPD(barrel of oil produced per day)" required="required" />
-        <input type="text" name="BWPD(barrel of water produced per day)" placeholder="BWPD(barrel of water produced per day)" required="required" />
-        <input type="text" name="BSW - basic solid and water (%)" placeholder="BSW - basic solid and water (%)" required="required" />
-        <input type="text" name="CO2 mol. (%) @ 25 C & 1 Atm." placeholder="CO2 mol. (%) @ 25 C & 1 Atm." required="required" />
-        <input type="text" name="Gas Gravity" placeholder="Gas Gravity" required="required" />
+    <div id="value-0">Incoming Wellhead Temperature Data</div>
+    <hr>
 
+    <div id="value-1">Incoming Wellhead Pressure Data</div>
+    <hr>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict Corrosion Defect</button>
-    </form>
+    <div id="value-2">Incoming MMCFD-gas Data</div>
+    <hr>
 
-   <br>
-   <br>
-   {{ prediction_text }}
+    <div id="value-3">Incoming Barrel of Oil Produced per day Data</div>
+    <hr>
 
- </div>
+    <div id="value-4">Incoming Barrel of Water Produced per day Data</div>
+    <hr>
 
+    <div id="value-5">Incoming CO2 mol. (%) @ 25 C & 1 Atm. Data</div>
+    <hr>
 
-</body>
-</html>
+    <div id="value-6">Incoming Gas Gravity Data</div>
+    <hr>
+
+    <div id="value-7">Predicted Corrosion Depth</div>
+    <hr>
+
+    <script>
+  
+      function handleResponse(response){ // equivalent of def
+        var value_0 = document.getElementById("value-0");
+        value_0.textContent = "Wellhead Temperature (DegC):  " + response.WellheadTemp;
+    
+
+        var value_1 = document.getElementById("value-1");
+        value_1.textContent = "Wellhead Pressure (psi):  " + response.WellheadPressure;
+
+        var value_2 = document.getElementById("value-2");
+        value_2.textContent = "MMCFD- gas:  " + response.MMCFDgas;
+       
+        var value_3 = document.getElementById("value-3");
+        value_3.textContent = "BOPD:  " + response.BOPD;
+
+        var value_4 = document.getElementById("value-4");
+        value_4.textContent = "BWPD:  " + response.BWPD;
+
+        var value_5 = document.getElementById("value-5");
+        value_5.textContent = "CO2 mol. (%) @ 25 C & 1 Atm.:  " + response.CO2;
+
+        var value_6 = document.getElementById("value-6");
+        value_6.textContent = "Gas Gravity:  " + response.GasGrav;
+
+        var value_7 = document.getElementById("value-7");
+        value_7.textContent = "Corrosion Depth Defect in mm:  " + response.predicted;
+        // all_1_values.push(response.predicted); // equivalent of list.append in python
+      }
+  
+      function getFromAPI(){
+        fetch("/pred").then(res => res.json()).then(handleResponse);
+      }
+  
+      setInterval(getFromAPI, 10000); //esssentially, run getFromAPI every 1000 milliseconds 
+  
+    </script>
+    <!-- Message From Engineering Team-->
+    <div class="col-xl-4 col-lg-5 ">
+      <div class="card">
+        <div class="card-header py-4 bg-primary d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-light">Message From Team</h6>
+        </div>
+        <div>
+          <div class="customer-message align-items-center">
+            <a class="font-weight-bold" href="#">
+              <div class="text-truncate message-title">@ Maintenance, please place orders for new coatings</div>
+              <div class="small text-gray-500 message-time font-weight-bold">Abimbola Ojikutu · 58m</div>
+            </a>
+          </div>
+          <div class="customer-message align-items-center">
+            <a href="#">
+              <div class="text-truncate message-title">@ Abimbola, orders already made.
+              </div>
+              <div class="small text-gray-500 message-time">AbdulWaheed Bishi · 58m</div>
+            </a>
+          </div>
+          <div class="customer-message align-items-center">
+            <a class="font-weight-bold" href="#">
+              <div class="text-truncate message-title">@ Engineer Bala and Engineer Olisa, Can we have the plant 1 down for the next week Friday
+              </div>
+              <div class="small text-gray-500 message-time font-weight-bold">Seun Oloruntoba · 25m</div>
+            </a>
+          </div>
+          <div class="customer-message align-items-center">
+            <a class="font-weight-bold" href="#">
+              <div class="text-truncate message-title">@ Professor Seun, we have that planned. Thanks.
+              </div>
+              <div class="small text-gray-500 message-time font-weight-bold">Engineer Bala · 10m</div>
+            </a>
+          </div>
+          <div class="card-footer text-center">
+            <a class="m-0 small text-primary card-link" href="#">View More <i
+                class="fas fa-chevron-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">Group E</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+  </body>
+  </html>

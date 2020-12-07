@@ -6,5 +6,10 @@
 * Predicted  "CR-corrosion defect" feature for fake_data2.csv using the .ipnyb above.
 * Final dataset is called generated_data.csv
 * Created a python script for the model - digitalModel.py
-* Created an endpoint - app.py
-* Created a json request script - json_request.py
+* Created a physical model data with 50 data points- stream.csv
+* Created an endpoint for the model  - app.py
+* Created an endpoint streaming to the digital model to -app2.py
+
+# To get a feel
+* Run app.py on terminal
+* Run app2.py on terminal

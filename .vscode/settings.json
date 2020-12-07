@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/Users/mac/Documents/AIIP/D4I/Oil-and-gas-pipeline-leakage/capstone/bin/python3.7"
+    "python.pythonPath": "/Users/mac/Documents/AIIP/D4I/Oil-and-gas-pipeline-leakage/capstone/bin/python3.7",
+    "git.ignoreLimitWarning": true
 }
