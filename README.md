@@ -8,7 +8,7 @@
 * Created a python script for the model - digitalModel.py
 * Created a physical model data with 50 data points- stream.csv
 * Created an endpoint for the model  - app.py
-* Created an endpoint streaming to the digital model to -app2.py
+* Created an endpoint streaming to the digital model to -app2.py (http://127.0.0.1:5001/)
 
 # To get a feel
 * Run app.py on terminal
