@@ -1,9 +1,10 @@
+# Import required libraries
 from flask import Flask, request, jsonify, render_template
 from flask_restful import reqparse, abort, Api, Resource
 import pickle
 import numpy as np
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
-#from digitalModel import loaded_model
+
 
 app = Flask(__name__)
 model = pickle.load(open('digital_model.pkl', 'rb'))
