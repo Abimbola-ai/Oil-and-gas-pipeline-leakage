@@ -10,6 +10,10 @@
 * Created an endpoint for the model  - app.py
 * Created an endpoint streaming to the digital model to -app2.py (http://127.0.0.1:5001/)
 
-# To get a feel
+# To get a feel and for the values to output in mm:
 * Run app.py on terminal
 * Run app2.py on terminal
+
+# To get a feel and for the values to output in NACE classification:
+* Run app_1.py on terminal
+* Run app_2.py on terminal
