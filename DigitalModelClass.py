@@ -48,12 +48,13 @@ data['CRDC']=data['CR-corrosion defect']
 data = data.rename(columns = {'CR-corrosion defect':"CRD"}, inplace=False)
 #data.head()
 
-data['CRDC'][(data.CRD<0.025)]= 'low(0.01 - 0.025 mm)'
-data['CRDC'][(data.CRD>=0.025)&(data.CRD<0.13)]= 'mild(0.0251 - 0.13 mm)'
-data['CRDC'][(data.CRD>=0.013)&(data.CRD<0.25)]= 'high(0.131 - 0.25 mm)'
-data['CRDC'][(data.CRD>=0.250)]= 'severe(0.251 - 1.57 mm)'
+data['CRDC'][(data.CRD<0.025)]= 'LOW(0.01 - 0.025 mm)'
+data['CRDC'][(data.CRD>=0.025)&(data.CRD<0.13)]= 'MILD(0.0251 - 0.13 mm)'
+data['CRDC'][(data.CRD>=0.013)&(data.CRD<0.25)]= 'HIGH(0.131 - 0.25 mm)'
+data['CRDC'][(data.CRD>=0.250)]= 'SEVERE(0.251 - 1.57 mm)'
 data = data.drop('CRD', axis=1)
-print(data.head())
+#print(data.head())
+
 
 data['CRDC']=data['CRDC'].astype('category')
 

@@ -38,7 +38,7 @@ def iter_all_rows():
             "BOPD": row[3],'BWPD': row[4],
             'BSW': row[5],"CO2": row[6], 'GasGrav': row[7],"predicted": r.json()}
            
-            time.sleep(10)
+            time.sleep(5)
             
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
