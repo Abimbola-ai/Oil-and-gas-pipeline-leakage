@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html >
+  
+<head>
+  <meta charset="UTF-8">
+  <title>Corrosion Defect Prediction </title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  
+</head> 
+<body style="background: #000;">
+  </div>
+  </div>
+    
+    <div class="text-xs font-weight-bold text-uppercase mb-1">DIGITAL MODEL DASHBOARD</div>
+    <hr>
+
+    <div id="value-0">Incoming Wellhead Temperature Data</div>
+    <hr>
+
+    <div id="value-1">Incoming Wellhead Pressure Data</div>
+    <hr>
+
+    <div id="value-2">Incoming MMCFD-gas Data</div>
+    <hr>
+
+    <div id="value-3">Incoming Barrel of Oil Produced per day Data</div>
+    <hr>
+
+    <div id="value-4">Incoming Barrel of Water Produced per day Data</div>
+    <hr>
+
+    <div id="value-5">Incoming CO2 mol. (%) @ 25 C & 1 Atm. Data</div>
+    <hr>
+
+    <div id="value-6">Incoming Gas Gravity Data</div>
+    <hr>
+
+    <div id="value-7">Predicted Corrosion Depth</div>
+    <hr>
+
+    <script>
+  
+      function handleResponse(response){ // equivalent of def
+        var value_0 = document.getElementById("value-0");
+        value_0.textContent = "Wellhead Temperature (DegC):  " + response.WellheadTemp;
+    
+
+        var value_1 = document.getElementById("value-1");
+        value_1.textContent = "Wellhead Pressure (psi):  " + response.WellheadPressure;
+
+        var value_2 = document.getElementById("value-2");
+        value_2.textContent = "MMCFD- gas:  " + response.MMCFDgas;
+       
+        var value_3 = document.getElementById("value-3");
+        value_3.textContent = "BOPD:  " + response.BOPD;
+
+        var value_4 = document.getElementById("value-4");
+        value_4.textContent = "BWPD:  " + response.BWPD;
+
+        var value_5 = document.getElementById("value-5");
+        value_5.textContent = "CO2 mol. (%) @ 25 C & 1 Atm.:  " + response.CO2;
+
+        var value_6 = document.getElementById("value-6");
+        value_6.textContent = "Gas Gravity:  " + response.GasGrav;
+
+        var value_7 = document.getElementById("value-7");
+        value_7.textContent = "Corrosion Depth Defect classification:  " + response.predicted;
+        // all_1_values.push(response.predicted); // equivalent of list.append in python
+      }
+  
+      function getFromAPI(){
+        fetch("/pred").then(res => res.json()).then(handleResponse);
+      }
+  
+      setInterval(getFromAPI, 10000); //esssentially, run getFromAPI every 1000 milliseconds 
+  
+    </script>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
+              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">Group E</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+  </body>
+  </html>
